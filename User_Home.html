@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            background-color: #000;
+            margin: 0;
+            padding: 0;
+            color: #fff;
+        }
+        .navbar {
+            background-color: #333;
+            padding: 10px 20px;
+        }
+        .navbar ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar ul li {
+            display: inline;
+            margin-right: 20px;
+            position: relative;
+        }
+        .navbar ul li a {
+            color: #ff0000;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 5px;
+            transition: background-color 0.3s;
+        }
+        .navbar ul li a:hover {
+            background-color: #555;
+        }
+        .navbar ul li.active a {
+            background-color: #555;
+        }
+        .navbar ul li a:hover,
+        .navbar ul li.active a:hover {
+            background-color: #777;
+        }
+        .username {
+            color: #ff0000;
+            font-weight: bold;
+        }
+        .header {
+            text-align: center;
+            padding: 20px;
+        }
+        .slideshow-container {
+            max-width: 300px;
+            margin: auto;
+            margin-top: 20px;
+            position: relative;
+            overflow: hidden; /* Hide overflow */
+        }
+        .mySlides {
+            display: none;
+            width: 300px; /* Set fixed width */
+            height: 200px; /* Set fixed height */
+            transition: transform 0.5s ease; /* Slide animation */
+        }
+        .mySlides img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ensure images fill the container */
+        }
+        /* Next & previous buttons */
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -22px;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        /* Position the "next button" to the right */
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+        /* On hover, add a black background color with a little bit see-through */
+        .prev:hover, .next:hover {
+            background-color: rgba(0,0,0,1);
+        }
+        .content {
+            padding: 20px;
+        }
+        .footer {
+            text-align: center; /* Center the text */
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <ul>
+            <li class="username">User</li>
+            <li class="active"><a href="User_Home.html">Home</a></li>
+            <li><a href="User_Ticket.html">Movie</a></li>
+            <li><a href="User_AboutUs.html">About Us</a></li>
+            <li style="float: right;"><a href="User_Login.html">Sign Out</a></li>
+        </ul>
+    </div>
+
+    <div class="header">
+        <h1>Welcome to Movie Ticket Booking</h1>
+    </div>
+
+    <div class="slideshow-container">
+        <div class="mySlides fade">
+            <img src="movie1.jpg" alt="Movie 1">
+        </div>
+        <div class="mySlides fade">
+            <img src="movie2.jpg" alt="Movie 2">
+        </div>
+        <!-- Add more slides as needed -->
+        <!-- Next and previous buttons -->
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    </div>
+
+    <div class="content">
+        <!-- Content of the homepage goes here -->
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2024 Movie Ticket Booking</p>
+    </div>
+
+    <script>
+        var slideIndex = 0;
+        showSlides();
+
+        function showSlides() {
+            var i;
+            var slides = document.getElementsByClassName("mySlides");
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) {slideIndex = 1}
+            slides[slideIndex-1].style.display = "block";
+            setTimeout(showSlides, 2000); // Change image every 2 seconds
+        }
+
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+    </script>
+</body>
+</html>

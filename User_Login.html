@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            background-color: #000;
+            margin: 0;
+            padding: 0;
+            color: #fff;
+        }
+        .login_container {
+            width: 400px;
+            margin: 100px auto;
+            background-color: #333;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            position: relative; 
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #ff0000;
+            font-size: 40px;
+        }
+        input[type="text"], input[type="password"], input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ff0000;
+            border-radius: 3px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            background-color: #ff0000;
+            color: #fff;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #cc0000;
+        }
+        .password-toggle {
+            color: #ff0000;
+            display: block;
+            margin-top: 10px; 
+        }
+        .password-toggle input[type="checkbox"] {
+            margin-right: 5px; 
+        }
+        .links {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .links a {
+            color: #ff0000;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        .links a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="login_container">
+        <h2>Welcome</h2>
+        <form action="#" method="post">
+            <input type="text" name="username" placeholder="Enter Your Username" required>
+            <input type="password" id="password" name="password" placeholder="Enter Your Password" required>
+            <label for="showPassword" class="password-toggle">
+                <input type="checkbox" id="showPassword"> Show Password
+            </label>
+            <br>
+            <input type="submit" value="Login">
+        </form>
+        <div class="links">
+            <a href="User_NewAccount.html">Create Account</a>
+            <span>|</span>
+            <a href="User_ResetPass.html">Reset Password</a>
+        </div>
+    </div>
+    <script>
+        document.getElementById('showPassword').addEventListener('change', function() {
+            var passwordField = document.getElementById('password');
+            passwordField.type = this.checked ? 'text' : 'password';
+        });
+    </script>
+</body>
+</html>
