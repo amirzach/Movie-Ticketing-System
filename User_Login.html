@@ -4,78 +4,128 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
-            font-family: 'Times New Roman', Times, serif;
+            font-family: 'Roboto', sans-serif;
             background-color: #000;
             margin: 0;
             padding: 0;
-            color: #fff;
+            color: #8B0000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .container {
+            position: relative;
+            width: 100%;
+            height: 100%;
         }
         .login_container {
             width: 400px;
-            margin: 100px auto;
             background-color: #333;
-            padding: 20px;
-            border-radius: 5px;
+            padding: 30px;
+            border-radius: 15px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-            position: relative; 
+            position: absolute;
+            left: 25%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+        .login_container form {
+            margin-bottom: 20px;
         }
         h2 {
             text-align: center;
             margin-bottom: 20px;
-            color: #ff0000;
+            color: #8B0000;
             font-size: 40px;
+            text-shadow: 2px 2px 2px #000;
         }
         input[type="text"], input[type="password"], input[type="submit"] {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #ff0000;
-            border-radius: 3px;
+            width: calc(100% - 40px);
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid #8B0000;
+            border-radius: 20px;
             box-sizing: border-box;
+            padding-left: 15px;
+            position: relative;
+            font-size: 18px;
+            color: #666;
+            background-color: #fff;
+            box-shadow: none;
+            transition: color 0.3s;
+        }
+        input[type="text"]:focus,
+        input[type="password"]:focus {
+            color: #555;
         }
         input[type="submit"] {
-            background-color: #ff0000;
+            background-color: #8B0000;
             color: #fff;
             cursor: pointer;
+            border: none;
+            border-radius: 20px;
+            padding: 15px 20px;
+            font-size: 18px;
+            text-shadow: 1px 1px 1px #000;
         }
         input[type="submit"]:hover {
-            background-color: #cc0000;
+            background-color: #6B0000;
         }
         .password-toggle {
-            color: #ff0000;
+            color: #8B0000;
             display: block;
-            margin-top: 10px; 
+            margin-top: 10px;
+            text-shadow: 1px 1px 1px #000;
         }
         .password-toggle input[type="checkbox"] {
-            margin-right: 5px; 
+            margin-right: 5px;
         }
         .links {
             text-align: center;
             margin-top: 20px;
         }
         .links a {
-            color: #ff0000;
+            color: #8B0000;
             text-decoration: none;
             margin: 0 10px;
+            text-shadow: 1px 1px 1px #000;
+            font-size: 16px;
+            transition: color 0.3s;
         }
         .links a:hover {
-            text-decoration: underline;
+            color: #fff;
+        }
+        .background-image {
+            background-image: url('welcome_background.jpg');
+            background-size: cover;
+            background-position: center;
+            width: 50%;
+            height: 100vh;
+            position: absolute;
+            right: 0;
+            top: 0;
         }
     </style>
 </head>
 <body>
+<div class="container">
+    <div class="background-image"></div>
     <div class="login_container">
-        <h2>Welcome</h2>
+        <h2>Book Tickets Now</h2>
         <form action="#" method="post">
-            <input type="text" name="username" placeholder="Enter Your Username" required>
-            <input type="password" id="password" name="password" placeholder="Enter Your Password" required>
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="password" id="password" name="password" placeholder="Password" required>
             <label for="showPassword" class="password-toggle">
                 <input type="checkbox" id="showPassword"> Show Password
             </label>
             <br>
-            <input type="submit" value="Login">
+            <input type="submit" value="Login to Book">
         </form>
         <div class="links">
             <a href="User_NewAccount.html">Create Account</a>
@@ -83,11 +133,12 @@
             <a href="User_ResetPass.html">Reset Password</a>
         </div>
     </div>
-    <script>
-        document.getElementById('showPassword').addEventListener('change', function() {
-            var passwordField = document.getElementById('password');
-            passwordField.type = this.checked ? 'text' : 'password';
-        });
-    </script>
+</div>
+<script>
+    document.getElementById('showPassword').addEventListener('change', function() {
+        var passwordField = document.getElementById('password');
+        passwordField.type = this.checked ? 'text' : 'password';
+    });
+</script>
 </body>
 </html>

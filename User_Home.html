@@ -4,17 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap">
     <style>
         body {
-            font-family: 'Times New Roman', Times, serif;
+            font-family: 'Roboto Condensed', sans-serif;
             background-color: #000;
             margin: 0;
             padding: 0;
             color: #fff;
         }
         .navbar {
-            background-color: #333;
-            padding: 10px 20px;
+            background-color: #000;
+            padding: 20px 20px; 
+            margin-bottom: 0; 
+            font-size: 18px; 
+            box-shadow: none; 
+            height: 70px; 
+            line-height: 70px; 
         }
         .navbar ul {
             list-style-type: none;
@@ -25,80 +31,145 @@
             display: inline;
             margin-right: 20px;
             position: relative;
+            color: gold; 
         }
         .navbar ul li a {
-            color: #ff0000;
+            color: gold; 
             text-decoration: none;
             font-weight: bold;
             padding: 5px;
-            transition: background-color 0.3s;
+            transition: color 0.3s; 
         }
         .navbar ul li a:hover {
-            background-color: #555;
+            color: white; 
         }
         .navbar ul li.active a {
-            background-color: #555;
+            color: silver; 
         }
         .navbar ul li a:hover,
         .navbar ul li.active a:hover {
-            background-color: #777;
+            color: #fff; 
         }
         .username {
-            color: #ff0000;
+            color: gold; 
             font-weight: bold;
         }
-        .header {
-            text-align: center;
-            padding: 20px;
-        }
         .slideshow-container {
-            max-width: 300px;
-            margin: auto;
-            margin-top: 20px;
+            width: 100%; 
+            margin-top: -10px; 
             position: relative;
-            overflow: hidden; /* Hide overflow */
+            overflow: hidden; 
+            max-height: calc(100vh - 220px); 
         }
         .mySlides {
             display: none;
-            width: 300px; /* Set fixed width */
-            height: 200px; /* Set fixed height */
-            transition: transform 0.5s ease; /* Slide animation */
+            width: 100%; 
+            height: auto; 
+            transition: opacity 0.5s; 
         }
         .mySlides img {
             width: 100%;
-            height: 100%;
-            object-fit: cover; /* Ensure images fill the container */
+            height: auto; 
+            object-fit: cover; 
         }
-        /* Next & previous buttons */
         .prev, .next {
             cursor: pointer;
             position: absolute;
             top: 50%;
-            width: auto;
+            transform: translateY(-50%); 
+            width: 50px; 
             padding: 16px;
-            margin-top: -22px;
-            color: white;
+            color: black; 
             font-weight: bold;
-            font-size: 18px;
-            transition: 0.6s ease;
-            border-radius: 0 3px 3px 0;
+            font-size: 24px; 
+            border-radius: 3px;
             user-select: none;
-            background-color: rgba(0, 0, 0, 0.8);
+            background-color: transparent; 
+            transition: background-color 0.3s; 
         }
-        /* Position the "next button" to the right */
         .next {
             right: 0;
-            border-radius: 3px 0 0 3px;
         }
-        /* On hover, add a black background color with a little bit see-through */
         .prev:hover, .next:hover {
-            background-color: rgba(0,0,0,1);
+            background-color: transparent; 
+        }
+        .prev:hover, .next:hover {
+            background-color: rgba(0,0,0,0.5); 
         }
         .content {
             padding: 20px;
+            text-align: center; 
         }
         .footer {
-            text-align: center; /* Center the text */
+            text-align: center; 
+        }
+        .book-now-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: gold;
+            color: black; 
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 30px;
+            margin-top: 20px; 
+            transition: background-color 0.3s, color 0.3s; 
+        }
+        .book-now-btn:hover {
+            background-color: transparent; 
+            color: gold; 
+        }
+        .top-movies {
+            margin-top: 20px; 
+            text-align: center; 
+        }
+        .top-movies-item {
+            margin-bottom: 10px; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+        }
+        .top-movies-item a {
+            color: white; 
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s; 
+            width: 300px; 
+            display: inline-block; 
+        }
+        .top-movies-item a:hover {
+            color: white; 
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #000;
+            min-width: 160px;
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+            z-index: 1;
+            left: 50%; 
+            transform: translateX(-50%); 
+            top: 100%; 
+            text-align: center; 
+        }
+        .dropdown-content a {
+            color: gold;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+        .dropdown-content a:hover {
+            color: gold; 
+            background-color: transparent; 
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        .dropdown:hover .dropbtn {
+            background-color: transparent;
+        }
+        .dropdown:active .dropdown-content {
+            display: block; 
         }
     </style>
 </head>
@@ -107,14 +178,16 @@
         <ul>
             <li class="username">User</li>
             <li class="active"><a href="User_Home.html">Home</a></li>
-            <li><a href="User_Ticket.html">Movie</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn">Movie</a>
+                <div class="dropdown-content">
+                    <a href="User_Ticket.html">All Movies</a>
+                    <a href="User_Booking.html">Book Tickets</a>
+                </div>
+            </li>
             <li><a href="User_AboutUs.html">About Us</a></li>
             <li style="float: right;"><a href="User_Login.html">Sign Out</a></li>
         </ul>
-    </div>
-
-    <div class="header">
-        <h1>Welcome to Movie Ticket Booking</h1>
     </div>
 
     <div class="slideshow-container">
@@ -124,14 +197,31 @@
         <div class="mySlides fade">
             <img src="movie2.jpg" alt="Movie 2">
         </div>
-        <!-- Add more slides as needed -->
-        <!-- Next and previous buttons -->
-        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        <div class="mySlides fade">
+            <img src="movie3.jpg" alt="Movie 3">
+        </div>
+        <div class="mySlides fade">
+            <img src="movie4.jpg" alt="Movie 4">
+        </div>
+        <a class="prev" onclick="plusSlides(-1)" onmousedown="return false">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)" onmousedown="return false">&#10095;</a>
     </div>
 
     <div class="content">
-        <!-- Content of the homepage goes here -->
+        <p>Welcome to our movie ticket booking platform! Explore our selection of movies and book your tickets conveniently online.</p>
+    </div>
+
+    <h2 style="color: gold; text-align: center;">Top 3 Hot Movies</h2>
+    <div class="top-movies">
+        <div class="top-movies-item">
+            <a href="User_Ticket.html">John Wick 4</a> <a href="User_Ticket.html" class="book-now-btn">Book Now</a>
+        </div>
+        <div class="top-movies-item">
+            <a href="User_Ticket.html">The Matrix (2024)</a> <a href="User_Ticket.html" class="book-now-btn">Book Now</a>
+        </div>
+        <div class="top-movies-item">
+            <a href="User_Ticket.html">Sicario Day Of The Soldado</a> <a href="User_Ticket.html" class="book-now-btn">Book Now</a>
+        </div>
     </div>
 
     <div class="footer">
@@ -151,7 +241,7 @@
             slideIndex++;
             if (slideIndex > slides.length) {slideIndex = 1}
             slides[slideIndex-1].style.display = "block";
-            setTimeout(showSlides, 2000); // Change image every 2 seconds
+            setTimeout(showSlides, 3000); 
         }
 
         function plusSlides(n) {
